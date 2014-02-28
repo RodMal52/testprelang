@@ -1,5 +1,11 @@
 Testprelang::Application.routes.draw do
-  resources :posts
+  resources :posts do
+    #->Prelang (voting/acts_as_votable)
+    member do
+      get "vote"
+    end
+  end
+
 
   get "landings/index"
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]
